@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django crash project</title>
+</head>
+<body>
+    {% if request.user.is_athenticated %}
+        Hello {{ request.user.username }}
+    {% else %}
+        Hello anonymous user
+    {% endif %}
+
+    <a href="/create">Create a todo</a>
+
+    <ul>
+        {% for todo in todo_list %}
+            <li><a href="/{{ todo.id }}">{{ todo.name }}</a>, it's due {{ todo.due_date }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
